@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.privatealbum.db.SharedViewModel" />
+        <variable
+            name="clickEvent"
+            type="com.example.privatealbum.home.album.ClickEvents" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="15dp"
+            app:fabCradleRoundedCornerRadius="20dp"
+            android:tag="1"
+            android:alpha="0"
+            android:backgroundTint="@color/green"
+            shouldShow="@{model.shouldShowBottomNavView}">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu="@menu/bottom_nav_menu"
+                android:background="@android:color/transparent" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/add"
+            app:tint="@color/white"
+            app:layout_anchor="@id/bottomAppBar"
+            android:tag="1"
+            shouldShow="@{model.shouldShowBottomNavView}"
+            android:onClick="@{(view)->clickEvent.addAlbum(view,model)}"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

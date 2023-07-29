@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/imageAlbumFragment"
+        android:icon="@drawable/image_album"
+        android:title="Images"
+        />
+    <item
+        android:id="@+id/empty"
+        android:title=""
+        />
+    <item
+        android:id="@+id/videoAlbumFragment"
+        android:icon="@drawable/video_album"
+        android:title="Videos"
+        />
+</menu>
